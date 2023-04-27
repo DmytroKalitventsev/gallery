@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,7 +7,7 @@
 }
 
 body {
-	font-family: sans-serif;
+	font-family: 'DM Sans', sans-serif;
 	height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -37,4 +39,8 @@ li {
 
 img {
 	width: 100%;
+}
+
+button {
+	padding: 20px;
 }
