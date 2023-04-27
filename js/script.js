@@ -26,6 +26,10 @@ class Gallery {
 		return document.querySelector('.modal');
 	}
 
+	get countPic() {
+		return this.allPicture.length - 1;
+	}
+
 	generateModalWindow() {
 		let str = `
 				<div class="overlay none">
@@ -84,6 +88,31 @@ class Gallery {
 					.none {
 						display: none;
 					}
+					
+					button {
+						padding: 20px;
+					}
+					
+					h2 {
+						margin-bottom: 20px;
+					}
+					
+					.btn {
+						position: relative;
+					}
+					
+					.btn__prev, .btn__next {
+						position: absolute;
+						top: -50px;
+					}
+					
+					.btn__prev {
+						right: 25%;
+					}
+					
+					.btn__next {
+						right: 0%;
+					}
 				</style>`;
 
 		document.head.insertAdjacentHTML('beforeend', str)
@@ -94,7 +123,7 @@ class Gallery {
 
 		if (targetPic) {
 			this.currentPic = this.allPicture.findIndex(picture => picture.url === targetPic.getAttribute('src'));
-			
+
 			this.fillContent(this.currentPic);
 
 			document.querySelector('.overlay').classList.remove('none');
@@ -108,10 +137,8 @@ class Gallery {
 	}
 
 	fillContent(indexPic) {
-		let countPic = this.allPicture.length - 1;
-		
 		indexPic = (indexPic < 0) ? indexPic = 0 : indexPic;
-		indexPic = (indexPic > countPic) ? indexPic = countPic : indexPic;
+		indexPic = (indexPic > this.countPic) ? indexPic = this.countPic : indexPic;
 
 		const scr = this.allPicture[indexPic].url;
 		const title = this.allPicture[indexPic].title;
@@ -122,17 +149,25 @@ class Gallery {
 		this.modalWindow.querySelector('p').innerText = descr;
 
 		this.currentPic = indexPic;
+
+		this.showButtons(indexPic);
+	}
+
+	showButtons(indexPic) {
+		const prevBtn = this.modalWindow.querySelector('.btn__prev');
+		const nextBtn = this.modalWindow.querySelector('.btn__next');
+
+		(indexPic === 0) ? prevBtn.classList.add('none') : prevBtn.classList.remove('none');
+		(indexPic === this.countPic) ? nextBtn.classList.add('none') : nextBtn.classList.remove('none');
 	}
 
 	changeContent(even) {
-		const prevBtn = even.target.closest('.btn__prev');
-		const nextBtn = even.target.closest('.btn__next')
-
-		if (prevBtn) {
+		if (even.target.closest('.btn__prev')) {
 			this.prevPic = this.currentPic - 1;
 			this.fillContent(this.prevPic);
 		}
-		if (nextBtn) {
+
+		if (even.target.closest('.btn__next')) {
 			this.nextPic = this.currentPic + 1;
 			this.fillContent(this.nextPic);
 		}
