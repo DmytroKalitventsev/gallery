@@ -82,7 +82,17 @@ class Gallery {
 						padding: 44px;
 						display: flex;
 						flex-direction: column;
-						justify-content: space-between;
+						justify-content: space-around;
+					}
+
+					.text h2 {
+						font-size: 24px;
+						text-transform: uppercase;
+					}
+
+					.text p {
+						font-size: 18px;
+						line-height: 1.23;
 					}
 					
 					.none {
@@ -93,17 +103,13 @@ class Gallery {
 						padding: 20px;
 					}
 					
-					h2 {
-						margin-bottom: 20px;
-					}
-					
 					.btn {
 						position: relative;
 					}
 					
 					.btn__prev, .btn__next {
 						position: absolute;
-						top: -50px;
+						top: -20px;
 					}
 					
 					.btn__prev {
@@ -140,11 +146,11 @@ class Gallery {
 		indexPic = (indexPic < 0) ? indexPic = 0 : indexPic;
 		indexPic = (indexPic > this.countPic) ? indexPic = this.countPic : indexPic;
 
-		const scr = this.allPicture[indexPic].url;
+		const url = this.allPicture[indexPic].url;
 		const title = this.allPicture[indexPic].title;
 		const descr = this.allPicture[indexPic].descr;
 
-		this.modalWindow.querySelector('img').setAttribute('src', scr);
+		this.modalWindow.querySelector('img').setAttribute('src', url);
 		this.modalWindow.querySelector('h2').innerText = title;
 		this.modalWindow.querySelector('p').innerText = descr;
 
