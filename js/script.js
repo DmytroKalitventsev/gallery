@@ -22,8 +22,8 @@ class Gallery {
 		return temp;
 	}
 
-	get overlay() {
-		return
+	get modalWindow() {
+		return document.querySelector('.modal');
 	}
 
 	generateModalWindow() {
@@ -71,6 +71,7 @@ class Gallery {
 					
 					.modal img {
 						width: 630px;
+						flex: 0 0 630px;
 					}
 					
 					.text {
@@ -93,14 +94,8 @@ class Gallery {
 
 		if (targetPic) {
 			this.currentPic = this.allPicture.findIndex(picture => picture.url === targetPic.getAttribute('src'));
-
-			const scr = this.allPicture[this.currentPic].url;
-			const title = this.allPicture[this.currentPic].title;
-			const descr = this.allPicture[this.currentPic].descr;
-
-			document.querySelector('.modal img').setAttribute('src', scr);
-			document.querySelector('.modal h2').innerText = title;
-			document.querySelector('.modal p').innerText = descr;
+			
+			this.fillContent(this.currentPic);
 
 			document.querySelector('.overlay').classList.remove('none');
 		}
@@ -112,19 +107,47 @@ class Gallery {
 		}
 	}
 
-	switchContent() {
+	fillContent(indexPic) {
+		let countPic = this.allPicture.length - 1;
+		
+		indexPic = (indexPic < 0) ? indexPic = 0 : indexPic;
+		indexPic = (indexPic > countPic) ? indexPic = countPic : indexPic;
 
+		const scr = this.allPicture[indexPic].url;
+		const title = this.allPicture[indexPic].title;
+		const descr = this.allPicture[indexPic].descr;
+
+		this.modalWindow.querySelector('img').setAttribute('src', scr);
+		this.modalWindow.querySelector('h2').innerText = title;
+		this.modalWindow.querySelector('p').innerText = descr;
+
+		this.currentPic = indexPic;
+	}
+
+	changeContent(even) {
+		const prevBtn = even.target.closest('.btn__prev');
+		const nextBtn = even.target.closest('.btn__next')
+
+		if (prevBtn) {
+			this.prevPic = this.currentPic - 1;
+			this.fillContent(this.prevPic);
+		}
+		if (nextBtn) {
+			this.nextPic = this.currentPic + 1;
+			this.fillContent(this.nextPic);
+		}
 	}
 
 	init() {
 		console.dir(this);
 		console.log(this.allPicture);
+
 		this.generateModalWindow();
 		this.generateStyle();
 		this.gallery.classList.add('gallery');
 		this.gallery.addEventListener('click', this.openModalWindow.bind(this));
 		document.body.addEventListener('click', this.closeModalWindow.bind(this));
-
+		this.modalWindow.querySelector('.btn').addEventListener('click', this.changeContent.bind(this));
 	}
 }
 
