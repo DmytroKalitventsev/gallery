@@ -2,7 +2,7 @@
 
 class Gallery {
 	constructor(gallery) {
-		this.gallery = gallery;
+		this.gallery = document.querySelector(gallery);
 		this.currentPic = 0;
 		this.prevPic = null;
 		this.nextPic = null
@@ -24,6 +24,18 @@ class Gallery {
 
 	get modalWindow() {
 		return document.querySelector('.modal');
+	}
+
+	get overlay() {
+		return document.querySelector('.overlay');
+	}
+
+	get modalBtns() {
+		return this.modalWindow.querySelector('.btn');
+	}
+
+	get closeBtn() {
+		return this.modalWindow.querySelector('.close');
 	}
 
 	get countPic() {
@@ -164,21 +176,23 @@ class Gallery {
 		document.head.insertAdjacentHTML('beforeend', str)
 	}
 
-	openModalWindow(even) {
-		const targetPic = even.target.closest('img');
+	openModalWindow(event) {
+		const targetPic = event.target.closest('img');
 
 		if (targetPic) {
 			this.currentPic = this.allPicture.findIndex(picture => picture.url === targetPic.getAttribute('src'));
 
 			this.fillContent(this.currentPic);
 
-			document.querySelector('.overlay').classList.remove('none');
+			this.overlay.classList.remove('none');
 		}
 	}
 
-	closeModalWindow(even) {
-		if (even.target.matches('.overlay')) {
-			even.target.classList.add('none');
+	closeModalWindow(event) {
+		if (event.target.matches('.overlay') || event.target.matches('.close')) {
+			event.stopPropagation();
+
+			this.overlay.classList.add('none');
 		}
 	}
 
@@ -207,34 +221,32 @@ class Gallery {
 		(indexPic === this.countPic) ? nextBtn.classList.add('none') : nextBtn.classList.remove('none');
 	}
 
-	changeContent(even) {
-		if (even.target.closest('.btn__prev')) {
+	changeContent(event) {
+		if (event.target.matches('.btn__prev')) {
 			this.prevPic = this.currentPic - 1;
 			this.fillContent(this.prevPic);
 		}
 
-		if (even.target.closest('.btn__next')) {
+		if (event.target.matches('.btn__next')) {
 			this.nextPic = this.currentPic + 1;
 			this.fillContent(this.nextPic);
 		}
 	}
 
 	init() {
-		console.dir(this);
-		console.log(this.allPicture);
-
 		this.generateModalWindow();
 		this.generateStyle();
+		this.modalWindow;
+		this.overlay;
+
 		this.gallery.classList.add('gallery');
 		this.gallery.addEventListener('click', this.openModalWindow.bind(this));
-		document.body.addEventListener('click', this.closeModalWindow.bind(this));
-		this.modalWindow.addEventListener('click', this.closeModalWindow.bind(this));
-		this.modalWindow.querySelector('.btn').addEventListener('click', this.changeContent.bind(this));
+		this.closeBtn.addEventListener('click', this.closeModalWindow.bind(this));
+		this.overlay.addEventListener('click', this.closeModalWindow.bind(this));
+		this.modalBtns.addEventListener('click', this.changeContent.bind(this));
 	}
 }
 
-const g = document.querySelector('.gallery-items');
-
-const gallery = new Gallery(g);
+const gallery = new Gallery('.gallery-items');
 
 gallery.init();
