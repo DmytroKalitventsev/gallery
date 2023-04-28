@@ -1,42 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 * {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body {
-	font-family: 'DM Sans', sans-serif;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  font-family: "DM Sans", sans-serif;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 ul {
-	list-style: none;
-	width: 960px;
-	display: flex;
-	column-gap: 20px;
+  list-style: none;
+  width: 960px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-column-gap: 20px;
+     -moz-column-gap: 20px;
+          column-gap: 20px;
 }
 
 li {
-	overflow: hidden;
-	height: 200px;
+  overflow: hidden;
+  height: 200px;
 }
 
 .gallery li {
-	cursor: pointer;
-	filter: grayscale(1);
+  cursor: pointer;
+  -webkit-filter: grayscale(1);
+          filter: grayscale(1);
 }
 
 .gallery li:hover {
-	filter: grayscale(0);
-	transition: filter 0.5s ease 0s;
-
+  -webkit-filter: grayscale(0);
+          filter: grayscale(0);
+  -webkit-transition: -webkit-filter 0.5s ease 0s;
+  transition: -webkit-filter 0.5s ease 0s;
+  transition: filter 0.5s ease 0s;
+  transition: filter 0.5s ease 0s, -webkit-filter 0.5s ease 0s;
 }
 
 img {
-	width: 100%;
-}
+  width: 100%;
+}/*# sourceMappingURL=style.css.map */

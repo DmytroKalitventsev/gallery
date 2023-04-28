@@ -43,6 +43,9 @@ class Gallery {
 								<button class="btn__next">&gt;</button>
 							</div>
 						</div>
+						<div class="close">
+							<span class="close__item"></span>
+						</div>
 					</div>
 				</div>`;
 
@@ -65,6 +68,7 @@ class Gallery {
 					}
 					
 					.modal {
+						position: relative;
 						width: 960px;
 						height: 427px;
 						overflow: hidden;
@@ -118,6 +122,42 @@ class Gallery {
 					
 					.btn__next {
 						right: 0%;
+					}
+
+					.close {
+						display: flex;
+						justify-content: center;
+						align-items: center;
+						flex-direction: column;
+						flex: 0 0 50px;
+						position: absolute;
+						top: 5px;
+						right: 5px;
+						width: 40px;
+						height: 40px;
+						border-radius: 15px;
+						transition: background-color 0.3s ease 0s;
+						cursor: pointer;
+					}
+					
+					.close__item,
+					.close::before {
+						content: "";
+						position: absolute;
+						width: 60%;
+						height: 2px;
+						border-radius: 20px;
+						background: #C4C4C4;
+						transition: transform 0.3s ease 0s;
+						
+					}
+					
+					.close::before {
+						transform: rotate(45deg);
+					}
+					
+					.close__item {
+						transform: rotate(-45deg);
 					}
 				</style>`;
 
@@ -188,6 +228,7 @@ class Gallery {
 		this.gallery.classList.add('gallery');
 		this.gallery.addEventListener('click', this.openModalWindow.bind(this));
 		document.body.addEventListener('click', this.closeModalWindow.bind(this));
+		this.modalWindow.addEventListener('click', this.closeModalWindow.bind(this));
 		this.modalWindow.querySelector('.btn').addEventListener('click', this.changeContent.bind(this));
 	}
 }
