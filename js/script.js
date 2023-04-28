@@ -2,8 +2,6 @@
 
 class Gallery {
 	#currentPic = 0;
-	#prevPic = null;
-	#nextPic = null;
 
 	constructor(gallery) {
 		this.gallery = document.querySelector(gallery);
@@ -42,7 +40,7 @@ class Gallery {
 	get countPic() {
 		return this.allPicture.length - 1;
 	}
-
+	
 	generateModalWindow() {
 		let str = `
 				<div class="overlay none">
@@ -224,13 +222,11 @@ class Gallery {
 
 	changeContent(event) {
 		if (event.target.matches('.btn__prev')) {
-			this.#prevPic = this.#currentPic - 1;
-			this.fillContent(this.#prevPic);
+			this.fillContent(this.#currentPic - 1);
 		}
 
 		if (event.target.matches('.btn__next')) {
-			this.#nextPic = this.#currentPic + 1;
-			this.fillContent(this.#nextPic);
+			this.fillContent(this.#currentPic + 1);
 		}
 	}
 
