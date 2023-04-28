@@ -1,11 +1,12 @@
 'use strict'
 
 class Gallery {
+	#currentPic = 0;
+	#prevPic = null;
+	#nextPic = null;
+
 	constructor(gallery) {
 		this.gallery = document.querySelector(gallery);
-		this.currentPic = 0;
-		this.prevPic = null;
-		this.nextPic = null
 	}
 
 	get allPicture() {
@@ -180,9 +181,9 @@ class Gallery {
 		const targetPic = event.target.closest('img');
 
 		if (targetPic) {
-			this.currentPic = this.allPicture.findIndex(picture => picture.url === targetPic.getAttribute('src'));
+			this.#currentPic = this.allPicture.findIndex(picture => picture.url === targetPic.getAttribute('src'));
 
-			this.fillContent(this.currentPic);
+			this.fillContent(this.#currentPic);
 
 			this.overlay.classList.remove('none');
 		}
@@ -208,12 +209,12 @@ class Gallery {
 		this.modalWindow.querySelector('h2').innerText = title;
 		this.modalWindow.querySelector('p').innerText = descr;
 
-		this.currentPic = indexPic;
+		this.#currentPic = indexPic;
 
-		this.showButtons(indexPic);
+		this.showModalBtns(indexPic);
 	}
 
-	showButtons(indexPic) {
+	showModalBtns(indexPic) {
 		const prevBtn = this.modalWindow.querySelector('.btn__prev');
 		const nextBtn = this.modalWindow.querySelector('.btn__next');
 
@@ -223,13 +224,13 @@ class Gallery {
 
 	changeContent(event) {
 		if (event.target.matches('.btn__prev')) {
-			this.prevPic = this.currentPic - 1;
-			this.fillContent(this.prevPic);
+			this.#prevPic = this.#currentPic - 1;
+			this.fillContent(this.#prevPic);
 		}
 
 		if (event.target.matches('.btn__next')) {
-			this.nextPic = this.currentPic + 1;
-			this.fillContent(this.nextPic);
+			this.#nextPic = this.#currentPic + 1;
+			this.fillContent(this.#nextPic);
 		}
 	}
 
