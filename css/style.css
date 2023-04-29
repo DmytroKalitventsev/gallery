@@ -1,27 +1,104 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
-* {
-  margin: 0;
+*,
+*::before,
+*::after {
   padding: 0;
+  margin: 0;
+  border: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
 
+html,
 body {
+  height: 100%;
+  line-height: 1;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+}
+
+span,
+img,
+svg {
+  display: block;
+}
+
+svg {
+  fill: currentColor;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  background-color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  font-family: inherit;
+}
+
+:root {
   font-family: "DM Sans", sans-serif;
-  height: 100vh;
+  font-weight: 400;
+  font-size: 13px;
+  color: #000;
+}
+
+body {
+  background-color: #fff;
+}
+
+.wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow: clip;
+  min-height: 100%;
+}
+
+[class*=__container] {
+  max-width: 1470px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.page {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 ul {
-  list-style: none;
   width: 960px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -49,8 +126,4 @@ li {
   transition: -webkit-filter 0.5s ease 0s;
   transition: filter 0.5s ease 0s;
   transition: filter 0.5s ease 0s, -webkit-filter 0.5s ease 0s;
-}
-
-img {
-  width: 100%;
 }/*# sourceMappingURL=style.css.map */

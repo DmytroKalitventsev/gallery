@@ -233,8 +233,8 @@ class Gallery {
 	init() {
 		this.generateModalWindow();
 		this.generateStyle();
-		this.modalWindow;
 		this.overlay;
+		this.modalWindow;
 
 		this.gallery.classList.add('gallery');
 		this.gallery.addEventListener('click', this.openModalWindow.bind(this));
