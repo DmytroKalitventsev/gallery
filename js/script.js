@@ -43,7 +43,7 @@ class Gallery {
 	
 	generateModalWindow() {
 		let str = `
-				<div class="overlay hidden">
+				<div class="overlay" style="display: none">
 					<div class="modal-gallery">
 						<div class="modal-gallery__pic-wrapper">
 							<img class="modal-gallery__pic" src="" alt="pic">
@@ -85,7 +85,6 @@ class Gallery {
 	generateStyle() {
 		let str = `
 				<style>
-				
 					.overlay {
 						display: grid;
 						justify-items: center;
@@ -190,7 +189,7 @@ class Gallery {
 
 			this.fillContent(this.#currentPic);
 
-			this.overlay.classList.remove('hidden');
+			this.overlay.style.display = null;
 		}
 	}
 
@@ -198,7 +197,7 @@ class Gallery {
 		if (event.target.matches('.overlay') || event.target.matches('.modal-gallery__close-img')) {
 			event.stopPropagation();
 
-			this.overlay.classList.add('hidden');
+			this.overlay.style.display = 'none';
 		}
 	}
 
