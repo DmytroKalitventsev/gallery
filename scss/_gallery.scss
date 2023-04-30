@@ -1,0 +1,33 @@
+.gallery {
+	padding-top: 115px;
+	padding-bottom: 50px;
+
+	&__items {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+		gap: 20px;
+	}
+	&__item {
+		position: relative;
+		padding: 0px 0px 80% 0px;
+		overflow: hidden;
+	}
+	&__pic {
+		position: absolute;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+	}
+}
+
+.hover-effect {
+	& .gallery__item {
+		cursor: pointer;
+		filter: grayscale(1);
+
+		&:hover {
+			filter: grayscale(0);
+			transition: filter 0.5s ease 0s;
+		}
+	}
+}

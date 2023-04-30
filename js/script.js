@@ -160,7 +160,6 @@ class Gallery {
 						border-radius: 20px;
 						background: #C4C4C4;
 						transition: transform 0.3s ease 0s;
-						
 					}
 					
 					.close::before {
@@ -236,7 +235,7 @@ class Gallery {
 		this.overlay;
 		this.modalWindow;
 
-		this.gallery.classList.add('gallery');
+		this.gallery.classList.add('hover-effect');
 		this.gallery.addEventListener('click', this.openModalWindow.bind(this));
 		this.closeBtn.addEventListener('click', this.closeModalWindow.bind(this));
 		this.overlay.addEventListener('click', this.closeModalWindow.bind(this));
@@ -244,6 +243,6 @@ class Gallery {
 	}
 }
 
-const gallery = new Gallery('.gallery-items');
+const gallery = new Gallery('.gallery__items');
 
 gallery.init();
