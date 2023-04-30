@@ -85,6 +85,7 @@ class Gallery {
 	generateStyle() {
 		let str = `
 				<style>
+				
 					.overlay {
 						display: grid;
 						justify-items: center;
