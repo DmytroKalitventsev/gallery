@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="middle" viewBox="0 0 101 9">
+		<g>
+			<rect width="101" height="9" fill="white" />
+		</g>
+	</symbol>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="big" viewBox="0 0 371 9">
+		<g>
+			<rect width="371" height="9" fill="#FFAD00" />
+		</g>
+	</symbol>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg">
+	<symbol id="small" viewBox="0 0 8 9">
+		<g>
+			<rect width="8" height="9" transform="matrix(-1 0 0 1 8 0)" fill="#FFAD00" />
+		</g>
+	</symbol>
+</svg>

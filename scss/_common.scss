@@ -9,19 +9,8 @@ body {
 	background-color: #fff;
 }
 
-.wrapper {
-	display: flex;
-	flex-direction: column;
-	overflow: clip;
-	min-height: 100%;
-}
-
 [class*="__container"] {
 	max-width: 990px;
 	margin: 0 auto;
 	padding: 0 15px;
-}
-
-.page {
-	flex: 1 1 auto;
 }

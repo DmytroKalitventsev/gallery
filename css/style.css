@@ -74,28 +74,10 @@ body {
   background-color: #fff;
 }
 
-.wrapper {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  overflow: clip;
-  min-height: 100%;
-}
-
 [class*=__container] {
   max-width: 990px;
   margin: 0 auto;
   padding: 0 15px;
-}
-
-.page {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
 }
 
 .gallery {
@@ -132,4 +114,93 @@ body {
   transition: -webkit-filter 0.5s ease 0s;
   transition: filter 0.5s ease 0s;
   transition: filter 0.5s ease 0s, -webkit-filter 0.5s ease 0s;
+}
+
+.hidden {
+  display: none;
+}
+
+.overlay {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-gallery {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  max-width: 960px;
+  overflow: hidden;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+          box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+}
+
+.modal-gallery__pic-wrapper {
+  max-width: 630px;
+}
+
+.modal-gallery__info {
+  padding: 45px;
+}
+
+.modal-gallery__close {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  height: 15px;
+  cursor: pointer;
+}
+
+.modal-gallery__text {
+  max-width: 245px;
+}
+
+.modal-gallery__title {
+  font-size: 1.3333rem;
+  line-height: 1.16; /* 28/24 */
+  text-transform: uppercase;
+}
+
+.modal-gallery__descr {
+  margin-top: 40px;
+  line-height: 1.23;
+}
+
+.modal-gallery__toggle-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-column-gap: 50px;
+     -moz-column-gap: 50px;
+          column-gap: 50px;
+  margin-top: 40px;
+}
+
+.modal-gallery__toggle-btn {
+  height: 24px;
+  cursor: pointer;
+}
+
+.modal-gallery__toggle-btn_prev {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }/*# sourceMappingURL=style.css.map */

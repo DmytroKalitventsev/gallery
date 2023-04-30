@@ -43,12 +43,14 @@ class Gallery {
 	
 	generateModalWindow() {
 		let str = `
-				<div class="overlay none">
+				<div class="overlay">
 					<div class="modal">
-						<img src="" alt="img">
+						<img src="img/pic1.jfif" alt="img">
 						<div class="text">
-							<h2></h2>
-							<p></p>
+							<h2>Lorem ipsum</h2>
+							<p>
+								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Egestas fermentum pellentesque gravida in nisl faucibus etiam. Porta viverra nibh morbi tellus donec mattis porttitor fusce.
+							</p>
 							<div class="btn">
 								<button class="btn__prev">&lt;</button>
 								<button class="btn__next">&gt;</button>
@@ -110,7 +112,7 @@ class Gallery {
 						line-height: 1.23;
 					}
 					
-					.none {
+					.hidden {
 						display: none;
 					}
 					
@@ -182,7 +184,7 @@ class Gallery {
 
 			this.fillContent(this.#currentPic);
 
-			this.overlay.classList.remove('none');
+			this.overlay.classList.remove('hidden');
 		}
 	}
 
@@ -190,7 +192,7 @@ class Gallery {
 		if (event.target.matches('.overlay') || event.target.matches('.close')) {
 			event.stopPropagation();
 
-			this.overlay.classList.add('none');
+			this.overlay.classList.add('hidden');
 		}
 	}
 
@@ -215,8 +217,8 @@ class Gallery {
 		const prevBtn = this.modalWindow.querySelector('.btn__prev');
 		const nextBtn = this.modalWindow.querySelector('.btn__next');
 
-		(indexPic === 0) ? prevBtn.classList.add('none') : prevBtn.classList.remove('none');
-		(indexPic === this.countPic) ? nextBtn.classList.add('none') : nextBtn.classList.remove('none');
+		(indexPic === 0) ? prevBtn.classList.add('hidden') : prevBtn.classList.remove('hidden');
+		(indexPic === this.countPic) ? nextBtn.classList.add('hidden') : nextBtn.classList.remove('hidden');
 	}
 
 	changeContent(event) {
@@ -230,8 +232,8 @@ class Gallery {
 	}
 
 	init() {
-		this.generateModalWindow();
-		this.generateStyle();
+		// this.generateModalWindow();
+		// this.generateStyle();
 		this.overlay;
 		this.modalWindow;
 
