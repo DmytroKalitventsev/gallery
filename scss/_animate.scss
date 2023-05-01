@@ -1,0 +1,82 @@
+.animate {
+	animation-duration: 0.4s;
+	animation-fill-mode: forwards;
+}
+
+.animate_fade-in {
+	animation-name: fadeIn;
+}
+@keyframes fadeIn {
+	from {
+		background-color: rgba(0, 0, 0, 0);
+	}
+
+	to {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+}
+
+.animate_fade-out {
+	animation-name: fadeOut;
+}
+@keyframes fadeOut {
+	from {
+		background-color: rgba(0, 0, 0, 0.5);
+	}
+
+	to {
+		background-color: rgba(0, 0, 0, 0);
+	}
+}
+
+.animate_in-up {
+	animation-name: slideInUp;
+}
+@keyframes slideInUp {
+	from {
+		transform: translate3d(0, 130%, 0);
+	}
+
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.animate_in-left {
+	animation-name: slideInLeft;
+}
+@keyframes slideInLeft {
+	from {
+		transform: translate3d(-200%, 0, 0);
+	}
+
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.animate_in-right {
+	animation-name: slideInRight;
+}
+@keyframes slideInRight {
+	from {
+		transform: translate3d(200%, 0, 0);
+	}
+
+	to {
+		transform: translate3d(0, 0, 0);
+	}
+}
+
+.animate_out-down {
+	animation-name: slideOutDown;
+}
+@keyframes slideOutDown {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+
+	to {
+		transform: translate3d(0, 130%, 0);
+	}
+}

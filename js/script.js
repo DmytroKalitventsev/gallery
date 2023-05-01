@@ -40,7 +40,7 @@ class Gallery {
 	get countPic() {
 		return this.allPicture.length - 1;
 	}
-	
+
 	generateModalWindow() {
 		let str = `
 				<div class="overlay" style="display: none">
@@ -190,6 +190,15 @@ class Gallery {
 			this.fillContent(this.#currentPic);
 
 			this.overlay.style.display = null;
+			this.overlay.classList.add('animate');
+			this.overlay.classList.add('animate_fade-in');
+			this.modalWindow.classList.add('animate');
+			this.modalWindow.classList.add('animate_in-up');
+
+			setTimeout(() => {
+				this.overlay.classList.remove('animate_fade-in');
+				this.modalWindow.classList.remove('animate_in-up');
+			}, 400);
 		}
 	}
 
@@ -197,7 +206,16 @@ class Gallery {
 		if (event.target.matches('.overlay') || event.target.matches('.modal-gallery__close-img')) {
 			event.stopPropagation();
 
-			this.overlay.style.display = 'none';
+			this.overlay.classList.add('animate_fade-out');
+			this.modalWindow.classList.add('animate_out-down');
+
+			setTimeout(() => {
+				this.overlay.style.display = 'none';
+				this.overlay.classList.remove('animate');
+				this.overlay.classList.remove('animate_fade-out');
+				this.modalWindow.classList.remove('animate');
+				this.modalWindow.classList.remove('animate_out-down');
+			}, 400);
 		}
 	}
 
@@ -237,8 +255,8 @@ class Gallery {
 	}
 
 	init() {
-		this.generateModalWindow();
-		this.generateStyle();
+		// this.generateModalWindow();
+		// this.generateStyle();
 		this.overlay;
 		this.modalWindow;
 
