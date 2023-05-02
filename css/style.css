@@ -87,6 +87,11 @@ body {
           animation-fill-mode: forwards;
 }
 
+.time-switching {
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+}
+
 .animate_fade-in {
   -webkit-animation-name: fadeIn;
           animation-name: fadeIn;
@@ -190,8 +195,8 @@ body {
 
 @-webkit-keyframes slideInLeft {
   from {
-    -webkit-transform: translate3d(-160%, 0, 0);
-            transform: translate3d(-160%, 0, 0);
+    -webkit-transform: translate3d(-130%, 0, 0);
+            transform: translate3d(-130%, 0, 0);
   }
   to {
     -webkit-transform: translate3d(0, 0, 0);
@@ -201,8 +206,8 @@ body {
 
 @keyframes slideInLeft {
   from {
-    -webkit-transform: translate3d(-160%, 0, 0);
-            transform: translate3d(-160%, 0, 0);
+    -webkit-transform: translate3d(-130%, 0, 0);
+            transform: translate3d(-130%, 0, 0);
   }
   to {
     -webkit-transform: translate3d(0, 0, 0);
@@ -216,8 +221,8 @@ body {
 
 @-webkit-keyframes slideInRight {
   from {
-    -webkit-transform: translate3d(160%, 0, 0);
-            transform: translate3d(160%, 0, 0);
+    -webkit-transform: translate3d(130%, 0, 0);
+            transform: translate3d(130%, 0, 0);
   }
   to {
     -webkit-transform: translate3d(0, 0, 0);
@@ -227,8 +232,8 @@ body {
 
 @keyframes slideInRight {
   from {
-    -webkit-transform: translate3d(160%, 0, 0);
-            transform: translate3d(160%, 0, 0);
+    -webkit-transform: translate3d(130%, 0, 0);
+            transform: translate3d(130%, 0, 0);
   }
   to {
     -webkit-transform: translate3d(0, 0, 0);

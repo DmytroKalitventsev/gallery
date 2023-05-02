@@ -3,6 +3,10 @@
 	animation-fill-mode: forwards;
 }
 
+.time-switching {
+	animation-duration: 0.5s;
+}
+
 .animate_fade-in {
 	animation-name: fadeIn;
 }
@@ -60,7 +64,7 @@
 }
 @keyframes slideInLeft {
 	from {
-		transform: translate3d(-160%, 0, 0);
+		transform: translate3d(-130%, 0, 0);
 	}
 
 	to {
@@ -73,7 +77,7 @@
 }
 @keyframes slideInRight {
 	from {
-		transform: translate3d(160%, 0, 0);
+		transform: translate3d(130%, 0, 0);
 	}
 
 	to {

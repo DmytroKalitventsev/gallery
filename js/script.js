@@ -306,10 +306,12 @@ class Gallery {
 	changeContent(event) {
 		if (event.target.matches('.modal-gallery__toggle-img_prev')) {
 			this.fillContent(this.#currentPic - 1);
-			
+
+			this.modalWindow.classList.add('time-switching');
 			this.modalWindow.classList.add('animate_in-left');
 
 			setTimeout(() => {
+				this.modalWindow.classList.remove('time-switching');
 				this.modalWindow.classList.remove('animate_in-left');
 			}, 500);
 		}
@@ -317,9 +319,11 @@ class Gallery {
 		if (event.target.matches('.modal-gallery__toggle-img_next')) {
 			this.fillContent(this.#currentPic + 1);
 			
+			this.modalWindow.classList.add('time-switching');
 			this.modalWindow.classList.add('animate_in-right');
 
 			setTimeout(() => {
+				this.modalWindow.classList.remove('time-switching');
 				this.modalWindow.classList.remove('animate_in-right');
 			}, 500);
 		}
