@@ -3,6 +3,10 @@
 	animation-fill-mode: forwards;
 }
 
+.switching {
+	animation-duration: 0.5s;
+}
+
 .animate_fade-in {
 	animation-name: fadeIn;
 }
@@ -42,12 +46,25 @@
 	}
 }
 
+.animate_out-down {
+	animation-name: slideOutDown;
+}
+@keyframes slideOutDown {
+	from {
+		transform: translate3d(0, 0, 0);
+	}
+
+	to {
+		transform: translate3d(0, 130%, 0);
+	}
+}
+
 .animate_in-left {
 	animation-name: slideInLeft;
 }
 @keyframes slideInLeft {
 	from {
-		transform: translate3d(-200%, 0, 0);
+		transform: translate3d(-150%, 0, 0);
 	}
 
 	to {
@@ -60,23 +77,10 @@
 }
 @keyframes slideInRight {
 	from {
-		transform: translate3d(200%, 0, 0);
+		transform: translate3d(150%, 0, 0);
 	}
 
 	to {
 		transform: translate3d(0, 0, 0);
-	}
-}
-
-.animate_out-down {
-	animation-name: slideOutDown;
-}
-@keyframes slideOutDown {
-	from {
-		transform: translate3d(0, 0, 0);
-	}
-
-	to {
-		transform: translate3d(0, 130%, 0);
 	}
 }

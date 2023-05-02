@@ -82,9 +82,12 @@ class Gallery {
 		document.body.insertAdjacentHTML('beforeend', str);
 	}
 
-	generateStyle() {
+	generateStyleModalWindow() {
 		let str = `
 				<style>
+					.hidden {
+						display: none;
+					}
 					.overlay {
 						display: grid;
 						justify-items: center;
@@ -181,6 +184,14 @@ class Gallery {
 		document.head.insertAdjacentHTML('beforeend', str)
 	}
 
+	generateStyleAnimate() {
+		let str = `
+
+		`;
+
+		return str;
+	}
+
 	openModalWindow(event) {
 		const targetPic = event.target.closest('img');
 
@@ -247,16 +258,32 @@ class Gallery {
 	changeContent(event) {
 		if (event.target.matches('.modal-gallery__toggle-img_prev')) {
 			this.fillContent(this.#currentPic - 1);
+
+			this.modalWindow.classList.add('switching');
+			this.modalWindow.classList.add('animate_in-left');
+
+			setTimeout(() => {
+				this.modalWindow.classList.remove('switching');
+				this.modalWindow.classList.remove('animate_in-left');
+			}, 500);
 		}
 
 		if (event.target.matches('.modal-gallery__toggle-img_next')) {
 			this.fillContent(this.#currentPic + 1);
+
+			this.modalWindow.classList.add('switching');
+			this.modalWindow.classList.add('animate_in-right');
+
+			setTimeout(() => {
+				this.modalWindow.classList.remove('switching');
+				this.modalWindow.classList.remove('animate_in-right');
+			}, 500);
 		}
 	}
 
 	init() {
-		// this.generateModalWindow();
-		// this.generateStyle();
+		this.generateModalWindow();
+		this.generateStyleModalWindow();
 		this.overlay;
 		this.modalWindow;
 
