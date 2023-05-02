@@ -3,10 +3,6 @@
 	animation-fill-mode: forwards;
 }
 
-.switching {
-	animation-duration: 0.5s;
-}
-
 .animate_fade-in {
 	animation-name: fadeIn;
 }
@@ -38,7 +34,7 @@
 }
 @keyframes slideInUp {
 	from {
-		transform: translate3d(0, 130%, 0);
+		transform: translate3d(0, 160%, 0);
 	}
 
 	to {
@@ -55,7 +51,7 @@
 	}
 
 	to {
-		transform: translate3d(0, 130%, 0);
+		transform: translate3d(0, 160%, 0);
 	}
 }
 
@@ -64,7 +60,7 @@
 }
 @keyframes slideInLeft {
 	from {
-		transform: translate3d(-150%, 0, 0);
+		transform: translate3d(-160%, 0, 0);
 	}
 
 	to {
@@ -77,7 +73,7 @@
 }
 @keyframes slideInRight {
 	from {
-		transform: translate3d(150%, 0, 0);
+		transform: translate3d(160%, 0, 0);
 	}
 
 	to {
