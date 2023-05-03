@@ -235,11 +235,11 @@ class Gallery {
 	generateStyleAnimate() {
 		let str = `
 				.animate {
-					animation-duration: 0.4s;
+					animation-duration: 0.6s;
 					animation-fill-mode: forwards;
 				}
 				.time-switching {
-					animation-duration: 0.6s;
+					animation-duration: 0.7s;
 				}
 				.animate_fade-in {
 					animation-name: fadeIn;
@@ -319,11 +319,11 @@ class Gallery {
 
 			this.fillContent(this.#currentPic);
 
-			this.animationOpen();
+			this.animateOpen();
 		}
 	}
 
-	animationOpen() {
+	animateOpen() {
 		this.overlay.style.display = null;
 		this.overlay.classList.add('animate');
 		this.overlay.classList.add('animate_fade-in');
@@ -333,18 +333,18 @@ class Gallery {
 		setTimeout(() => {
 			this.overlay.classList.remove('animate_fade-in');
 			this.modalWindow.classList.remove('animate_in-up');
-		}, 400);
+		}, 600);
 	}
 
 	closeModalWindow(event) {
 		if (event.target.matches('.overlay') || event.target.matches('.modal-gallery__close-img')) {
 			event.stopPropagation();
 
-			this.animationClose();
+			this.animateClose();
 		}
 	}
 
-	animationClose() {
+	animateClose() {
 		this.overlay.classList.add('animate_fade-out');
 		this.modalWindow.classList.add('animate_out-down');
 
@@ -354,7 +354,7 @@ class Gallery {
 			this.overlay.classList.remove('animate_fade-out');
 			this.modalWindow.classList.remove('animate');
 			this.modalWindow.classList.remove('animate_out-down');
-		}, 400);
+		}, 600);
 	}
 
 	fillContent(indexPic) {
@@ -393,7 +393,7 @@ class Gallery {
 			setTimeout(() => {
 				this.modalWindow.classList.remove('time-switching');
 				this.modalWindow.classList.remove('animate_in-left');
-			}, 600);
+			}, 700);
 		}
 
 		if (event.target.matches('.modal-gallery__toggle-img_next')) {
@@ -405,7 +405,7 @@ class Gallery {
 			setTimeout(() => {
 				this.modalWindow.classList.remove('time-switching');
 				this.modalWindow.classList.remove('animate_in-right');
-			}, 600);
+			}, 700);
 		}
 	}
 
