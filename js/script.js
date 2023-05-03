@@ -9,7 +9,7 @@ class Gallery {
 
 	get allPicture() {
 		let temp = [];
-		this.gallery.querySelectorAll('img').forEach(elem => {
+		this.gallery.querySelectorAll('.gallery__pic').forEach(elem => {
 			let obj = {};
 
 			obj.url = elem.getAttribute('src');
@@ -18,6 +18,7 @@ class Gallery {
 
 			temp.push(obj);
 		});
+
 		return temp;
 	}
 
@@ -237,11 +238,9 @@ class Gallery {
 					animation-duration: 0.4s;
 					animation-fill-mode: forwards;
 				}
-				
 				.time-switching {
-					animation-duration: 0.5s;
+					animation-duration: 0.6s;
 				}
-				
 				.animate_fade-in {
 					animation-name: fadeIn;
 				}
@@ -249,12 +248,10 @@ class Gallery {
 					from {
 						background-color: rgba(0, 0, 0, 0);
 					}
-				
 					to {
 						background-color: rgba(0, 0, 0, 0.5);
 					}
 				}
-				
 				.animate_fade-out {
 					animation-name: fadeOut;
 				}
@@ -262,25 +259,21 @@ class Gallery {
 					from {
 						background-color: rgba(0, 0, 0, 0.5);
 					}
-				
 					to {
 						background-color: rgba(0, 0, 0, 0);
 					}
 				}
-				
 				.animate_in-up {
 					animation-name: slideInUp;
 				}
 				@keyframes slideInUp {
 					from {
-						transform: translate3d(0, 160%, 0);
+						transform: translate3d(0, 200%, 0);
 					}
-				
 					to {
 						transform: translate3d(0, 0, 0);
 					}
 				}
-				
 				.animate_out-down {
 					animation-name: slideOutDown;
 				}
@@ -288,33 +281,28 @@ class Gallery {
 					from {
 						transform: translate3d(0, 0, 0);
 					}
-				
 					to {
-						transform: translate3d(0, 160%, 0);
+						transform: translate3d(0, 200%, 0);
 					}
 				}
-				
 				.animate_in-left {
 					animation-name: slideInLeft;
 				}
 				@keyframes slideInLeft {
 					from {
-						transform: translate3d(-130%, 0, 0);
+						transform: translate3d(-200%, 0, 0);
 					}
-				
 					to {
 						transform: translate3d(0, 0, 0);
 					}
 				}
-				
 				.animate_in-right {
 					animation-name: slideInRight;
 				}
 				@keyframes slideInRight {
 					from {
-						transform: translate3d(130%, 0, 0);
+						transform: translate3d(200%, 0, 0);
 					}
-				
 					to {
 						transform: translate3d(0, 0, 0);
 					}
@@ -331,34 +319,42 @@ class Gallery {
 
 			this.fillContent(this.#currentPic);
 
-			this.overlay.style.display = null;
-			this.overlay.classList.add('animate');
-			this.overlay.classList.add('animate_fade-in');
-			this.modalWindow.classList.add('animate');
-			this.modalWindow.classList.add('animate_in-up');
-
-			setTimeout(() => {
-				this.overlay.classList.remove('animate_fade-in');
-				this.modalWindow.classList.remove('animate_in-up');
-			}, 400);
+			this.animationOpen();
 		}
+	}
+
+	animationOpen() {
+		this.overlay.style.display = null;
+		this.overlay.classList.add('animate');
+		this.overlay.classList.add('animate_fade-in');
+		this.modalWindow.classList.add('animate');
+		this.modalWindow.classList.add('animate_in-up');
+
+		setTimeout(() => {
+			this.overlay.classList.remove('animate_fade-in');
+			this.modalWindow.classList.remove('animate_in-up');
+		}, 400);
 	}
 
 	closeModalWindow(event) {
 		if (event.target.matches('.overlay') || event.target.matches('.modal-gallery__close-img')) {
 			event.stopPropagation();
 
-			this.overlay.classList.add('animate_fade-out');
-			this.modalWindow.classList.add('animate_out-down');
-
-			setTimeout(() => {
-				this.overlay.style.display = 'none';
-				this.overlay.classList.remove('animate');
-				this.overlay.classList.remove('animate_fade-out');
-				this.modalWindow.classList.remove('animate');
-				this.modalWindow.classList.remove('animate_out-down');
-			}, 400);
+			this.animationClose();
 		}
+	}
+
+	animationClose() {
+		this.overlay.classList.add('animate_fade-out');
+		this.modalWindow.classList.add('animate_out-down');
+
+		setTimeout(() => {
+			this.overlay.style.display = 'none';
+			this.overlay.classList.remove('animate');
+			this.overlay.classList.remove('animate_fade-out');
+			this.modalWindow.classList.remove('animate');
+			this.modalWindow.classList.remove('animate_out-down');
+		}, 400);
 	}
 
 	fillContent(indexPic) {
@@ -397,7 +393,7 @@ class Gallery {
 			setTimeout(() => {
 				this.modalWindow.classList.remove('time-switching');
 				this.modalWindow.classList.remove('animate_in-left');
-			}, 500);
+			}, 600);
 		}
 
 		if (event.target.matches('.modal-gallery__toggle-img_next')) {
@@ -409,7 +405,7 @@ class Gallery {
 			setTimeout(() => {
 				this.modalWindow.classList.remove('time-switching');
 				this.modalWindow.classList.remove('animate_in-right');
-			}, 500);
+			}, 600);
 		}
 	}
 
